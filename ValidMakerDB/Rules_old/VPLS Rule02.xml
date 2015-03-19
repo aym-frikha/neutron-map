@@ -1,0 +1,29 @@
+<?xml version="1.0" standalone="yes"?>
+<Rule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="file:/C:/Program%20Files/validmaker/Data/Schema/Rule.xsd" name="VPLS Rule02">
+  <Description>dans la meme arbre la valeur de "xconnect vfi" doit etre egale a "l2 vfi"</Description>
+  <Conditions/>
+  <Actions>
+    <Action>
+      <LogicalOp>NONE</LogicalOp>
+      <Negated>false</Negated>
+      <Operation>NodeValueEqual</Operation>
+      <LeftTree>1</LeftTree>
+      <LeftOperand>
+        <Node>
+          <ServiceRef>VPLS</ServiceRef>
+          <Name>xconnect vfi</Name>
+          <GUID>9</GUID>
+        </Node>
+      </LeftOperand>
+      <RightTree>1</RightTree>
+      <RightOperand>
+        <Node>
+          <ServiceRef>VPLS</ServiceRef>
+          <Name>l2 vfi</Name>
+          <GUID>1</GUID>
+        </Node>
+      </RightOperand>
+    </Action>
+  </Actions>
+</Rule>

@@ -1,0 +1,26 @@
+ADMIN_PASSWORD=adminpwd                                                          
+MYSQL_PASSWORD=sqlpwd                                                            
+RABBIT_PASSWORD=rabbitpwd                                                        
+SERVICE_PASSWORD=servicepwd                                                      
+SERVICE_TOKEN=servicetkn                                                         
+HOST_IP=192.168.2.1
+                                                                                 
+ENABLED_SERVICES=n-cpu,rabbit,neutron,q-agt
+                                                                                 
+RECLONE=yes                                                                      
+                                                                                 
+MULTI_HOST=True                                                                  
+
+SERVICE_HOST=132.208.13.13 # replace this with the IP address of the controller node
+MYSQL_HOST=$SERVICE_HOST
+RABBIT_HOST=$SERVICE_HOST
+Q_HOST=$SERVICE_HOST
+GLANCE_HOSTPORT=$SERVICE_HOST:9292
+
+SCREEN_LOGDIR=/var/logs/openstack
+
+FLAT_INTERFACE=eth0
+ENABLE_TENANT_VLANS=True
+TENANT_VLAN_RANGE=1000:1999
+PHYSICAL_NETWORK=physnet0
+OVS_PHYSICAL_BRIDGE=br-eth0

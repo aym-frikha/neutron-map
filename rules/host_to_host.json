@@ -1,0 +1,8 @@
+{
+    "host_to_host" : [
+        {
+            "apply" : ["VxLANProfile", "NVGRE", "STT"]
+        }
+    ]
+}
+ 

@@ -1,0 +1,29 @@
+<?xml version="1.0" standalone="yes"?>
+<Rule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="file:/C:/Program%20Files/validmaker/Data/Schema/Rule.xsd" name="VPLS Rule03">
+  <Description>dans la meme arbre la valeur de "interface vlan" doit etre egale a "trunk vlan"</Description>
+  <Conditions/>
+  <Actions>
+    <Action>
+      <LogicalOp>NONE</LogicalOp>
+      <Negated>false</Negated>
+      <Operation>NodeValueEqual</Operation>
+      <LeftTree>1</LeftTree>
+      <LeftOperand>
+        <Node>
+          <ServiceRef>VPLS</ServiceRef>
+          <Name>interface vlan</Name>
+          <GUID>8</GUID>
+        </Node>
+      </LeftOperand>
+      <RightTree>1</RightTree>
+      <RightOperand>
+        <Node>
+          <ServiceRef>trunk-allow</ServiceRef>
+          <Name>vlan</Name>
+          <GUID>4</GUID>
+        </Node>
+      </RightOperand>
+    </Action>
+  </Actions>
+</Rule>

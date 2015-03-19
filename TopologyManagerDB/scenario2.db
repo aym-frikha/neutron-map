@@ -1,0 +1,5 @@
+      #;  server1,132.208.13.50,server,thinkmate,Ltir2014  ;  Switch1,132.208.13.50,switch,thinkmate,Ltir2014   ;  Switch2,132.208.13.50,switch,thinkmate,Ltir2014 ;  server2,132.208.13.50,server,thinkmate,Ltir2014
+server1;            #                           ;       link1,eth1,FastEthernet1/3        ;             #                         ;           #
+Switch1;   link1,FastEthernet1/3,eth1           ;               #                         ; link2,FastEthernet1/2,FastEthernet1/0 ;           #
+Switch2;             #                          ;   link2,FastEthernet1/0,FastEthernet1/2 ;             #                         ;     link3,FastEthernet1/1,eth1
+server2;             #                          ;             #                           ;     link3,eth1,FastEthernet1/0        ;           #

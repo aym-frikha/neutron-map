@@ -1,0 +1,30 @@
+<?xml version="1.0" standalone="yes"?>
+<Rule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="../Schema/Rule.xsd" name="eompls_equal">
+  <Description>dans deux arbre differents il faut que xconnect est egale a l'adresse ip de l'interface loopback0</Description>
+  <Conditions>
+    <Condition>
+      <LogicalOp>NONE</LogicalOp>
+      <Negated>false</Negated>
+      <Operation>NodeValueEqual</Operation>
+      <LeftTree>1</LeftTree>
+      <LeftOperand>
+        <Node>
+          <ServiceRef>eompls_ext</ServiceRef>
+          <Name>xconnect</Name>
+          <GUID>3</GUID>
+        </Node>
+      </LeftOperand>
+      <RightTree>2</RightTree>
+      <RightOperand>
+        <Node>
+          <ServiceRef>eompls_int</ServiceRef>
+          <Name>ip address</Name>
+          <GUID>2</GUID>
+        </Node>
+      </RightOperand>
+    </Condition>
+  </Conditions>
+  <Actions>
+  </Actions>
+</Rule>

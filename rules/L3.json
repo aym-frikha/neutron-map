@@ -1,0 +1,8 @@
+{
+    "L3" : [
+        {
+            "apply" : ["MPLS-VPN", "VPN", "VPLS", "OTV"]
+        }
+    ]
+}
+ 

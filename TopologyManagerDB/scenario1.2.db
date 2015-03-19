@@ -1,0 +1,11 @@
+      #;  server1,0.0.0.0,server,test,test ;  sw1,0.0.0.0,switch,test,test; sw2,0.0.0.0,switch,test,test; r1,0.0.0.0,router,test,test;  r2,0.0.0.0,router,test,test  ; r3,0.0.0.0,router,test,test;  r4,0.0.0.0,router,test,test; sw3,0.0.0.0,switch,test,test;sw4,0.0.0.0,switch,test,test;  server2,0.0.0.0,server,test,test
+server1; #;   l1,eth1,f1; # ; # ;  # ;  # ;  #;  #;  #;  #
+sw1;l1,f1,eth1;  #;  l2,f2,f1;  #;  l4,f3,f1;  #;  #;  #;  #;  #
+sw2;  #;  l2,f1,f2;  #;  l3,f2,f1;  #;  #;  #;  #;  #;  #
+r1;  #;  #;  l3,f1,f2;  #;  #;  l6,f2,f1;  #;  #;  #;  #
+r2;  #;  l4,f1,f2;  #;  #;  #;  #;  l5,f2,f1;  #;  #;  #
+r3;  #;  #;  #;  l6,f1,f2;  #;  #;  #;  l7,f2,f1;  #;  #
+r4;  #;  #;  #;  #;  l5,f1,f2;  #;  #;  #;  l8,f2,f1;  #
+sw3;  #;  #;  #;  #;  #;  l7,f1,f2;  #;  #;  l9,f2,f2,;  #
+sw4;  #;  #;  #;  #;  #;  #;  l8,f1,f2;  l9,f2,f2;  l10,f3,eth1
+server2;  #;  #;  #;  #;  #;  #;  #;  #;  l10,eth1,f3;  #

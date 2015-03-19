@@ -1,0 +1,57 @@
+<?xml version="1.0" ?>
+<Device name="Router7">
+	<Description>
+  </Description>
+	<Properties>
+		<IOSVersion>12.0(3)T</IOSVersion>
+		<EquipmentType>
+    </EquipmentType>
+	</Properties>
+	<Services/>
+	<ConfigTree>
+		<Node CimRef="" name="version">
+			<BaseParent href=""/>
+			<Value>12.4</Value>
+		</Node>
+		<Node CimRef="" name="hostname">
+			<BaseParent href=""/>
+			<Value>Router1</Value>
+		</Node>
+		<Node CimRef="" name="ip cef">
+			<BaseParent href=""/>
+		</Node>
+         <Node CimRef="" name="interface">
+			<BaseParent href=""/>
+			<Value>Loopback0</Value>
+            <Children>
+				<Node CimRef="" name="ip address">
+                    <Value>5.5.5.5</Value>
+                    <Parameters>
+                        <Node CimRef="" name="mask" shadow="true">
+                            <Value>255.255.255.0</Value>
+                        </Node>
+                    </Parameters>
+				</Node>
+			</Children>
+		</Node>
+        <Node CimRef="" name="interface">
+			<BaseParent href=""/>
+			<Value>FastEthernet0/1</Value>
+            <Children>
+				<Node CimRef="" name="ip address">
+                    <Value>192.168.23.2</Value>
+                    <Parameters>
+                        <Node CimRef="" name="mask" shadow="true">
+                            <Value>255.255.255.0</Value>
+                        </Node>
+                    </Parameters>
+				</Node>
+            </Children>
+		</Node>
+        <Node CimRef="" name="interface">
+			<BaseParent href=""/>
+			<Value>FastEthernet0/0</Value>
+		</Node>
+
+	</ConfigTree>
+</Device>

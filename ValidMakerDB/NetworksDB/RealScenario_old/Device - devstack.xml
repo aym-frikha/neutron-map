@@ -1,0 +1,113 @@
+<?xml version="1.0" standalone="yes"?>
+<Device name="devstack">
+  <Description>
+  </Description>
+  <Properties>
+    <IOSVersion>
+    </IOSVersion>
+    <EquipmentType>
+    </EquipmentType>
+  </Properties>
+  <Services />
+  <ConfigTree>
+    <Node name="version" CimRef="">
+      <BaseParent href="" />
+      <Value>12.4</Value>
+    </Node>
+    <Node name="hostname" CimRef="">
+      <BaseParent href="" />
+      <Value>Router</Value>
+    </Node>
+    <Node name="ip cef" CimRef="">
+      <BaseParent href="" />
+    </Node>
+    <Node name="interface" CimRef="">
+      <BaseParent href="" />
+      <Value>FastEthernet0/0</Value>
+      <Children>
+        <Node name="no ip address" CimRef="" />
+      </Children>
+    </Node>
+    <Node name="interface" CimRef="">
+      <BaseParent href="" />
+      <Value>FastEthernet0/1</Value>
+      <Children>
+        <Node name="no ip address" CimRef="" />
+      </Children>
+    </Node>
+    <Node name="interface" CimRef="">
+      <BaseParent href="" />
+      <Value>FastEthernet1/0</Value>
+    </Node>
+    <Node name="interface" CimRef="">
+      <BaseParent href="" />
+      <Value>FastEthernet1/1</Value>
+    </Node>
+    <Node name="interface" CimRef="">
+      <BaseParent href="" />
+      <Value>FastEthernet1/2</Value>
+    </Node>
+    <Node name="interface" CimRef="">
+      <BaseParent href="" />
+      <Value>FastEthernet1/3</Value>
+    </Node>
+    <Node name="interface" CimRef="">
+      <BaseParent href="" />
+      <Value>FastEthernet1/4</Value>
+    </Node>
+    <Node name="interface" CimRef="">
+      <BaseParent href="" />
+      <Value>FastEthernet1/5</Value>
+    </Node>
+    <Node name="interface" CimRef="">
+      <BaseParent href="" />
+      <Value>FastEthernet1/6</Value>
+    </Node>
+    <Node name="interface" CimRef="">
+      <BaseParent href="" />
+      <Value>FastEthernet1/7</Value>
+    </Node>
+    <Node name="interface" CimRef="">
+      <BaseParent href="" />
+      <Value>FastEthernet1/8</Value>
+    </Node>
+    <Node name="interface" CimRef="">
+      <BaseParent href="" />
+      <Value>FastEthernet1/9</Value>
+    </Node>
+    <Node name="interface" CimRef="">
+      <BaseParent href="" />
+      <Value>FastEthernet1/10</Value>
+    </Node>
+    <Node name="interface" CimRef="">
+      <BaseParent href="" />
+      <Value>FastEthernet1/11</Value>
+    </Node>
+    <Node name="interface" CimRef="">
+      <BaseParent href="" />
+      <Value>FastEthernet1/12</Value>
+    </Node>
+    <Node name="interface" CimRef="">
+      <BaseParent href="" />
+      <Value>FastEthernet1/13</Value>
+    </Node>
+    <Node name="interface" CimRef="">
+      <BaseParent href="" />
+      <Value>FastEthernet1/14</Value>
+    </Node>
+    <Node name="interface" CimRef="">
+      <BaseParent href="" />
+      <Value>FastEthernet1/15</Value>
+    </Node>
+    <Node name="interface" CimRef="">
+      <BaseParent href="" />
+      <Value>Vlan1</Value>
+      <Children>
+        <Node name="no ip address" CimRef="" />
+      </Children>
+    </Node>
+    <Node name="end" CimRef="">
+      <BaseParent href="" />
+    </Node>
+  </ConfigTree>
+</Device>

@@ -1,0 +1,15 @@
+# Vim session files and swap files
+.*.swp
+*.vim
+
+# Xml swap files
+*.xml~
+
+# Compiled python
+*.pyc
+
+# Compiled pdf
+*.pdf
+*.aux
+*.log
+

@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<Device name="Switch2">
+	<Description>
+  </Description>
+	<Properties>
+		<IOSVersion>12.0(3)T</IOSVersion>
+		<EquipmentType>
+    </EquipmentType>
+	</Properties>
+	<Services/>
+	<ConfigTree>
+		<Node CimRef="" name="version">
+			<BaseParent href=""/>
+			<Value>12.4</Value>
+		</Node>
+		<Node CimRef="" name="hostname">
+			<BaseParent href=""/>
+			<Value>Switch2</Value>
+		</Node>
+		<Node CimRef="" name="ip cef">
+			<BaseParent href=""/>
+		</Node>
+
+	</ConfigTree>
+</Device>

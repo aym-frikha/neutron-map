@@ -1,0 +1,51 @@
+<?xml version="1.0" standalone="yes"?>
+<Rule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="file:/C:/Program%20Files/validmaker/Data/Schema/Rule.xsd" name="VPLS Rule01">
+  <Description>dans deux arbre differents si si l2 vfi sont egaux alors la valeur de neighbor est egale a l'adresse ip de l'interface loopback0</Description>
+  <Conditions>
+    <Condition>
+      <LogicalOp>NONE</LogicalOp>
+      <Negated>false</Negated>
+      <Operation>NodeValueEqual</Operation>
+      <LeftTree>1</LeftTree>
+      <LeftOperand>
+        <Node>
+          <ServiceRef>VPLS</ServiceRef>
+          <Name>l2 vfi</Name>
+          <GUID>1</GUID>
+        </Node>
+      </LeftOperand>
+      <RightTree>2</RightTree>
+      <RightOperand>
+        <Node>
+          <ServiceRef>VPLS</ServiceRef>
+          <Name>l2 vfi</Name>
+          <GUID>1</GUID>
+        </Node>
+      </RightOperand>
+    </Condition>
+  </Conditions>
+  <Actions>
+    <Action>
+      <LogicalOp>NONE</LogicalOp>
+      <Negated>false</Negated>
+      <Operation>NodeValueEqual</Operation>
+      <LeftTree>1</LeftTree>
+      <LeftOperand>
+        <Node>
+          <ServiceRef>VPLS</ServiceRef>
+          <Name>neighbor</Name>
+          <GUID>3</GUID>
+        </Node>
+      </LeftOperand>
+      <RightTree>2</RightTree>
+      <RightOperand>
+        <Node>
+          <ServiceRef>VPLS</ServiceRef>
+          <Name>ip address</Name>
+          <GUID>5</GUID>
+        </Node>
+      </RightOperand>
+    </Action>
+  </Actions>
+</Rule>

@@ -1,0 +1,142 @@
+Rule system used in this plugin is a way to choose an isolation method.
+
+Rule are parsed and followed like grammars define languages.
+A rule file contains a 'root' rule named accordingly to the file.
+
+When entering a rule file, parser is looking for an isolation method to apply on a bunch of domains for a given network.
+The first rule (by default 'network'), concern all domains selected by triggering action.
+Ex: If a create_port occurs on a new host, in a new domain, rules will be explored to found an isolation method on all domains containing at least one host containing at least one VM on a same network. This network is the network containg the new port.
+
+A rule is an ordonned set of expression. Expression are:
+- follow:
+	follow a rule specified in an other file
+- apply:
+	Try to apply given isolation list (in given order)
+- condition:
+	Test is divided in three parts:
+	* test : condition evaluated on domains threated by the rule
+	* match : actions to apply if at least one domain matches condition
+	* unmatch (optional): action to apply if no domain matches test condition
+- divide:
+	Split domains in multiple groups.
+	A divide is a set of couple 'test'-'action'.
+	'test' is describe in the 'condition' section
+	'action' is a list of statement to apply on selected domains
+
+
+Build-in function:
+To test, two 'build-in' function are currently available:
+-isolation:
+	function that return all domains already using an isolation method (for concerned network)
+-contains_type:
+	function that return all domains containing types given as arguments
+
+
+Features:
+- A Bang, '!', before a function name correspond to a logical 'no' applyed to the function result
+- 'apply' statements returns the ID generated for the isolation tested. A variable name can be used to store this value.
+- 'apply' statement can take arguments
+
+
+Examples:
+{
+    "L2" : [
+        {
+            "apply" : ["trunk-allow", "GRE"]
+        }
+    ]
+}
+This very basic rule try to apply 'trunk-allow' isolation on domains received. It the application fails, (ex: A device doesn't support trunk-allow), it will try using 'GRE' as isolation method.
+
+
+{
+    "domain" : [
+    {
+        "condition" : [
+            {
+                "test" : {
+                    "contains_type" : ["L2"]
+                },
+                "match" : [{
+                    "condition" : [
+                        {
+                            "test" : {
+                                "contains_type" : ["L3"]
+                            },
+                            "match" : [{
+                                "follow" : ["host_to_host", "mixed-l2-l3"]
+                            }],
+                            "unmatch" : [{
+                                "follow" : "L2"
+                            }]
+                        }
+                    ]
+                }]
+            },
+            {
+                "test" : {
+                    "contains_type" : ["L3"],
+                    "!contains_type" : ["L2"]
+                },
+                "match" : [{
+                    "follow" : "L3"
+                }]
+            }
+        ]
+    }
+    ]
+}
+This rule is composed of one 'condition' statement. First it tests if domains contain at least one 'L2' domain. If they do, it will test if there is at least one 'L3' domain. If treated domains contain both L2 and L3, file 'host_to_host' is explored. If no solution is applicable in this branch, 'mixed-l2-l3' is tried. In case no L3 is found, rule file 'L2' is followed. 
+In case no L2 is found, (or all application failed), the branch is droped and the exploration continue on next statement. Here it is still in the condition. An other test it evaluated. In fact two tests: the branch is explored if 'L3' is found but no 'L2'. A True result would launch the explorer on file 'L3'. Else, this file exploration return with no result.
+
+
+{
+    "mixed-l2-l3" : [
+       {
+           "divide" : [
+                {
+                    "test" : {
+                        "contains_type" : ["L2"]
+                    },
+                    "match" : [{
+                        "apply" : ["vlan_id=trunk-allow"]
+                    }]
+                },
+                {
+                    "test" : {
+                        "contains_type" : ["L3"]
+                    },
+                    "match" : [{
+                        "apply" : ["OTV(vlan_id)", "VPLS(vlan_id)"]
+                    }]
+                }
+            ]
+       },
+       {
+           "divide" : [
+                {
+                    "test" : {
+                        "contains_type" : ["L2"]
+                    },
+                    "match" : [{
+                        "follow" : ["L2"]
+                    }]
+                },
+                {
+                    "test" : {
+                        "contains_type" : ["L3"]
+                    },
+                    "match" : [{
+                        "follow" : ["L3"]
+                    }]
+                }
+            ]
+        }
+    ]
+}
+Here is an example of divide. In both branch (explored in apparition order), domains are divided in L2 domains and L3 domains.
+In the first branch, L2 domains are provided with vlans (trunk-allow) and the ID used for identify the isolation method (Vlan ID) is stored in a 'vlan_id' variable. Then, L3 domains are treated by applying OTV or VPLS. Those isolation methods take vlan_id as an argument because they need to know which vlan to extend.
+
+
+
+This rule system is maybe not very suitable for extension and complex rule writting. It can be changed by modifying directly RuleBasedStrategist (decision.py) method 'follow_rule', responsible for rule parsing.

@@ -1,0 +1,48 @@
+{
+    "mixed-l2-l3" : [
+       {
+           "divide" : [
+                {
+                    "test" : {
+                        "contains_type" : ["L2"]
+                    },
+                    "match" : [{
+                        "apply" : ["vlan_id=trunk-allow"]
+                    }]
+                },
+                {
+                    "test" : {
+                        "contains_type" : ["L3"]
+                    },
+                    "match" : [{
+                        "apply" : ["OTV(vlan_id)", "VPLS(vlan_id)"]
+                    }]
+                }
+            ]
+       },
+       {
+           "divide" : [
+                {
+                    "test" : {
+                        "contains_type" : ["L2"]
+                    },
+                    "match" : [{
+                        "follow" : ["L2"]
+                    }]
+                },
+                {
+                    "test" : {
+                        "contains_type" : ["L3"]
+                    },
+                    "match" : [{
+                        "follow" : ["L3"]
+                    }]
+                }
+            ]
+        }
+    ]
+}
+
+
+
+

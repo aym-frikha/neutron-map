@@ -1,0 +1,40 @@
+{
+    "domain" : [
+    {
+        "condition" : [
+            {
+                "test" : {
+                    "contains_type" : ["L2"]
+                },
+                "match" : [{
+                    "condition" : [
+                        {
+                            "test" : {
+                                "contains_type" : ["L3"]
+                            },
+                            "match" : [{
+                                "follow" : ["host_to_host", "mixed-l2-l3"]
+                            }],
+                            "unmatch" : [{
+                                "follow" : "L2"
+                            }]
+                        }
+                    ]
+                }]
+            },
+            {
+                "test" : {
+                    "contains_type" : ["L3"],
+                    "!contains_type" : ["L2"]
+                },
+                "match" : [{
+                    "follow" : "L3"
+                }]
+            }
+        ]
+    }
+    ]
+}
+
+
+                 

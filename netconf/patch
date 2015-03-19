@@ -1,0 +1,27 @@
+/usr/local/lib/python2.7/dist-packages/ncclient/xml_.py -> 65
+def to_xml(ele, encoding="UTF-8"):
+    "Convert and return the XML for an *ele* (:class:`~xml.etree.ElementTree.Element`) with specified *encoding*."
+    xml = ET.tostring(ele, encoding)
+    xml = xml.replace(' />', '/>')
+    return xml if xml.startswith('<?xml') else '<?xml version="1.0" encoding="%s"?>%s' % (encoding, xml)
+
+
+/usr/local/lib/python2.7/dist-packages/ncclient/operations/rpc.py -> 179
+def callback(self, root, raw):
+    tag, attrs = root
+    if tag != qualify("rpc-reply"):
+        tag = tag.replace('urn:ietf:params:netconf:base:1.0',
+                'urn:ietf:params:xml:ns:netconf:base:1.0')
+        if tag != qualify("rpc-reply"):
+            return
+
+
+/usr/local/lib/python2.7/dist-packages/ncclient/operations/retrieve.py -> 25
+def _parsing_hook(self, root):
+    self._data = None
+    if not self._errors:
+        qualified_data = qualify("data")
+        qualified_data = qualified_data.replace(
+                                'urn:ietf:params:xml:ns:netconf:base:1.0',
+                                'urn:ietf:params:netconf:base:1.0')
+        self._data = root.find(qualified_data)

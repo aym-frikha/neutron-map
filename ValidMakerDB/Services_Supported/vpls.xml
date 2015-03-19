@@ -1,0 +1,31 @@
+<?xml version="1.0" standalone="yes"?>
+<GenericService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="../Schema/GenericService.xsd" name="vpls">
+  <Description>
+  </Description>
+<Transactional>false</Transactional>
+<Priority>2</Priority>
+<Domain>L3</Domain>
+  <ServiceTree>
+    <Node name="l2 vfi" CimRef="" uid="1">
+      <BaseParent href="" />
+      <Children>
+        <Node name="vpn id" CimRef="" uid="2" />
+        <Node name="neighbor" CimRef="" uid="3" cardinality="1N"/>
+      </Children>
+    </Node>
+    <Node name="interface" CimRef="" uid="4">
+      <BaseParent href="" />
+      <Children>
+        <Node name="ip address" CimRef="" uid="5" />
+      </Children>
+    </Node>
+    
+   <Node name="interface vlan" CimRef="" uid="8">
+      <BaseParent href="" />
+      <Children>
+        <Node name="xconnect vfi" CimRef="" uid="9" />
+      </Children>
+    </Node>
+  </ServiceTree>
+</GenericService>

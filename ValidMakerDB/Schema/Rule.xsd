@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:element name="Rule">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Description" type="xs:string"/>
+                <xs:element name="Conditions">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element maxOccurs="unbounded" minOccurs="0" name="Condition"
+                                type="LogOperation"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="Actions">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element maxOccurs="unbounded" minOccurs="0" name="Action"
+                                type="LogOperation"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="LogOperation">
+        <xs:sequence>
+            <xs:element default="NONE" name="LogicalOp" type="xs:string"/>
+            <xs:element name="Negated" type="xs:boolean"/>
+            <xs:element name="Operation" type="xs:string"/>
+            <xs:element name="LeftTree" type="xs:integer"/>
+            <xs:element name="LeftOperand" type="Operand"> </xs:element>
+            <xs:element name="RightTree" type="xs:integer"/>
+            <xs:element name="RightOperand" type="Operand"> </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RuleNode">
+        <xs:sequence>
+            <xs:element name="ServiceRef" type="xs:string"/>
+            <xs:element name="Name" type="xs:string"/>
+            <xs:element name="GUID" type="xs:long"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Operand">
+        <xs:choice>
+            <xs:element name="Node" nillable="false" type="RuleNode" minOccurs="0"/>
+            <xs:element name="Value" type="xs:string" minOccurs="0"/>
+        </xs:choice>
+    </xs:complexType>
+</xs:schema>

@@ -1,0 +1,15 @@
+NODE,h1,L2
+NODE,h2,L2
+#
+NODE,s1,L2
+NODE,s2,L2
+NODE,s3,L2
+#
+LINK,h1,h1/s1,s1,s1/h1
+LINK,h2,h2/s3,s3,s3/h2
+#
+LINK,s1,s1/s2,s2,s2/s1
+LINK,s2,s2/s3,s3,s3/s2
+LINK,s3,s3/s1,s1,s1/s3
+#
+BROD,s1,s2,s3

@@ -1,0 +1,292 @@
+<?xml version="1.0" standalone="yes"?>
+<OSReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="file:/C:/Program%20Files/validmaker/Data/Schema/OSreference.xsd" name="IOS">
+  <Description>Cisco IOS command reference (all versions)</Description>
+  <OSVersions mode="chronological">
+    <OSversion name="10.0"/>
+    <OSversion name="11.1"/>
+    <OSversion name="11.1 CC"/>
+    <OSversion name="11.1 CT"/>
+    <OSversion name="12.0(1)T"/>
+    <OSversion name="12.0(3)T"/>
+    <OSversion name="12.0(5)T"/>
+    <OSversion name="NxOS 5.1"/>
+    <OSversion name="12.2"/>
+  </OSVersions>
+  <CommandList>
+    <Command name="hostname" type="command" mode="global" negated="no">
+      <Syntax version="10.0">hostname $name</Syntax>
+      <Syntax version="NxOS 5.1">hostname $name</Syntax>
+     
+    </Command>
+    <Command name="version" type="command" mode="global" negated="no">
+      <Syntax version="">version $version</Syntax>
+      <Syntax version="NxOS 5.1">version $version</Syntax>
+      
+    </Command>
+    <Command name="ip cef" type="command" mode="global" negated="yes">
+      <Syntax version="11.1 CC">ip cef [%accounting $type | %load-sharing algorithm $algorithm | %table $type | %traffic-statistics]</Syntax>
+    </Command>
+      <Command name="ip ospf network" type="command" mode="interface" negated="yes">
+      <Syntax version="11.1 CC">ip ospf network $ip_ospf_network</Syntax>
+    </Command>
+       <Command name="xconnect" type="command" mode="interface" negated="yes">
+      <Syntax version="11.1 CC">xconnect $ip_loopback_interface #vcid $vcid #encapsulation $encapsulation</Syntax>
+    </Command>
+    <Command name="rd" type="command" mode="vrf" negated="no">
+      <Syntax version="12.0(5)T">rd $route-distinguisher</Syntax>
+    </Command>
+    <Command name="route-target import" type="command" mode="vrf" negated="yes">
+      <Syntax version="12.0(5)T">route-target import $route-target-ext-community</Syntax>
+    </Command>
+    <Command name="route-target export" type="command" mode="vrf" negated="yes">
+      <Syntax version="12.0(5)T">route-target export $route-target-ext-community</Syntax>
+    </Command>
+    <Command name="interface" type="mode" mode="global" negated="no">
+      <Syntax version="10.0">interface $type$number</Syntax>
+      <Syntax version="NxOS 5.1">interface $type$number</Syntax>
+      
+      <Syntax version="12.0(3)T">interface $type$number [$name-tag]</Syntax>
+    </Command>
+    <Command name="ip vrf forwarding" type="command" mode="interface" negated="yes">
+      <Syntax version="12.0(5)T">ip vrf forwarding $vrf-name</Syntax>
+    </Command>
+    <Command name="ip vrf" type="mode" mode="global" negated="yes">
+      <Syntax version="12.0(5)T">ip vrf $vrf-name</Syntax>
+    </Command>
+    <Command name="ip directed-broadcast" type="command" mode="interface" negated="yes">
+      <Syntax version="10.0">ip directed-broadcast [$access-list-number] | [$extended access-list-number]</Syntax>
+    </Command>
+    <Command name="no ip address" type="command" mode="interface" negated="no">
+      <Syntax version="10.0">no ip address</Syntax>
+      <Syntax version="NxOS 5.1">no ip address</Syntax>
+     
+    </Command>
+    <Command name="ip address" type="command" mode="interface" negated="no">
+      <Syntax version="10.0">ip address $ip-address #mask $mask [secondary]</Syntax>
+      <Syntax version="NxOS 5.1">ip address $ip-address #mask $mask</Syntax>
+    </Command>
+     
+     <Command name="ip igmp version" type="command" mode="interface" negated="no">
+      <Syntax version="NxOS 5.1">ip igmp version $num</Syntax>
+    </Command>
+
+    <Command name="encapsulation" type="command" mode="interface" negated="yes">
+      <Syntax version="10.0">encapsulation $encapsulation-type</Syntax>
+    </Command>
+	<Command name="mode" type="command" mode="interface" negated="yes">
+      <Syntax version="10.0">mode $mode</Syntax>
+	<Syntax version="12.0(3)T">mode $mode</Syntax>
+	<Syntax version="10.0">mode $mode</Syntax>
+    </Command>
+    <Command name="fair-queue" type="command" mode="interface" negated="yes">
+      <Syntax version="12.0(5)T">fair-queue [$number-of-dynamic-queues]</Syntax>
+    </Command>
+    <Command name="router isis" type="mode" mode="global" negated="yes">
+      <Syntax version="10.0">router isis [$area-tag]</Syntax>
+    </Command>
+      <Command name="router ospf" type="mode" mode="global" negated="yes">
+      <Syntax version="10.0">router ospf $router</Syntax>
+    </Command>
+      <Command name="log-adjacency-changes" type="command" mode="router ospf" negated="yes">
+      <Syntax version="10.0">log-adjacency-changes</Syntax>
+    </Command>
+      <Command name="passive-interface" type="command" mode="router ospf" negated="yes">
+      <Syntax version="10.0">passive-interface $interface</Syntax>
+    </Command>
+      <Command name="network" type="command" mode="router ospf" negated="yes">
+      <Syntax version="10.0">network $ip_adress #area $area</Syntax>
+    </Command>
+    <Command name="ip router isis" type="command" mode="interface" negated="yes">
+      <Syntax version="10.0">ip router isis [$area-tag]</Syntax>
+    </Command>
+    <Command name="ip forward-protocol" type="mode" mode="global" negated="yes">
+      <Syntax version="11.1 CT">ip forward-protocol $value</Syntax>
+    </Command>
+    <Command name="ip http server" type="mode" mode="global" negated="yes">
+      <Syntax version="10.0">ip http server</Syntax>
+    </Command>
+    <Command name="ip http secure-server" type="mode" mode="global" negated="yes">
+      <Syntax version="10.0">ip http secure-server</Syntax>
+    </Command>
+    <Command name="logging alarm informational" type="mode" mode="global" negated="yes">
+      <Syntax version="10.0">logging alarm informational</Syntax>
+    </Command>
+    <Command name="control-plane" type="mode" mode="global" negated="yes">
+      <Syntax version="10.0">control-plane</Syntax>
+    </Command>
+    <Command name="is-type" type="command" mode="router" negated="yes">
+      <Syntax version="10.3">is-type [level-1 | level-1-2 | level-2-only]</Syntax>
+    </Command>
+    <Command name="bgp log-neighbor-changes" type="command" mode="router" negated="yes">
+      <Syntax version="11.1 CC">bgp log-neighbor-changes</Syntax>
+    </Command>
+    <Command name="neighbor remote-as" type="command" mode="router" negated="yes">
+      <Syntax version="10.0">neighbor {$ip-address | $peer-group-name} remote-as #as-number $as-number</Syntax>
+    </Command>
+    <Command name="neighbor update-source" type="command" mode="router" negated="yes">
+      <Syntax version="10.0">neighbor {$ip-address | $ipv6-address | $peer-group-name} update-source #interface $interface-type$interface-number</Syntax>
+    </Command>
+    <Command name="address-family vpnv4" type="submode" mode="router" negated="yes">
+      <Syntax version="12.0(5)T">address-family vpnv4 [unicast]</Syntax>
+    </Command>
+    <Command name="neighbor activate" type="command" mode="addressfamily" negated="yes">
+      <Syntax version="11.0">neighbor {$ip-address | $peer-group-name | $ipv6-address} activate</Syntax>
+    </Command>
+    <Command name="neighbor send-community" type="command" mode="addressfamily" negated="yes">
+      <Syntax version="10.3">neighbor {$ip-address | $peer-group-name} send-community [#send-type {both | standard | extended}]</Syntax>
+    </Command>
+    <Command name="exit-address-family" type="command" mode="addressfamily" negated="yes">
+      <Syntax version="12.0(5)T">exit-address-family</Syntax>
+    </Command>
+    <Command name="address-family ipv4 vrf" type="submode" mode="router" negated="yes">
+      <Syntax version="12.0(5)T">address-family ipv4 vrf $vrf-name</Syntax>
+    </Command>
+    <Command name="redistribute" type="command" mode="addressfamily" negated="yes">
+      <Syntax version="11.1">redistribute [connected | eigrp $autonomous-system-number | floating-static | rip | static]</Syntax>
+    </Command>
+    <Command name="auto-summary" type="command" mode="addressfamily" negated="yes">
+      <Syntax version="10.0">auto-summary</Syntax>
+    </Command>
+    <Command name="synchronization" type="command" mode="addressfamily" negated="yes">
+      <Syntax version="10.0">synchronization</Syntax>
+      <Syntax version="12.2">synchronization</Syntax>
+    </Command>
+    <Command name="ip classless" type="command" mode="global" negated="yes">
+      <Syntax version="10.0">ip classless</Syntax>
+      <Syntax version="12.2">ip classless</Syntax>
+    </Command>
+      <Command name="switchport mode" type="command" mode="interface" negated="yes">
+      <Syntax version="12.04">switchport mode $mode</Syntax>
+    </Command>
+       <Command name="switchport trunk" type="command" mode="interface" negated="yes">
+      <Syntax version="12.04">switchport trunk $mode</Syntax>
+    </Command>
+       <Command name="switchport access" type="command" mode="interface" negated="yes">
+      <Syntax version="12.04">switchport access $mode</Syntax>
+    </Command>
+    <Command name="end" type="command" mode="global" negated="no">
+      <Syntax version="10.0">end</Syntax>
+      <Syntax version="12.2">end</Syntax>
+    </Command>
+    <Command name="vlan" type="command" mode="switchport" negated="no">
+      <Syntax version="10.0">vlan $vlan-id</Syntax>
+      <Syntax version="12.2">vlan $vlan-id</Syntax>
+      <Syntax version="NxOS 5.1">vlan $vlan-id</Syntax>
+    </Command>
+
+     <Command name="interface vlan" type="mode" mode="global" negated="no">
+      <Syntax version="10.0">interface vlan $vlan-id</Syntax>
+      <Syntax version="NxOS 5.1">interface vlan $vlan-id</Syntax>
+      <Syntax version="12.0(3)T">interface vlan $vlan-id</Syntax>
+    </Command>
+    <Command name="name" type="command" mode="vlan" negated="no">
+      <Syntax version="NxOS 5.1">name $vlan-name</Syntax>
+      
+    </Command>
+      <Command name="duplex auto" type="command" mode="interface" negated="no">
+      <Syntax version="12.04">duplex auto</Syntax>
+
+    </Command>
+      <Command name="speed auto" type="command" mode="interface" negated="no">
+      <Syntax version="12.04">speed auto</Syntax>
+
+    </Command>
+    <Command name="state" type="command" mode="vlan" negated="no">
+      <Syntax version="NxOS 5.1">state $state</Syntax>
+      
+    </Command>
+    <Command name="no shutdown" type="command" mode="vlan" negated="no">
+      <Syntax version="NxOS 5.1">no shutdown</Syntax>
+      
+    </Command>
+    
+    <Command name="trunk vlan" type="command" mode="interface" negated="no">
+      <Syntax version="NxOS 5.1">switchport trunk allowed vlan $vlan-id</Syntax>
+      <Syntax version="12.2">switchport trunk allowed vlan $vlan-id</Syntax>
+    </Command>
+    <Command name="feature" type="command" mode="global" negated="no">
+      <Syntax version="NxOS 5.1">feature $value</Syntax>
+    </Command>
+    <Command name="mpls ip" type="command" mode="interface" negated="no">
+      <Syntax version="NxOS 5.1">mpls ip</Syntax>
+      
+    </Command>
+    <Command name="bridge domain" type="mode" mode="global" negated="no">
+      <Syntax version="NxOS 5.1">bridge-domain $name</Syntax>
+    </Command>
+    <Command name="segment id" type="command" mode="bridge domain" negated="no">
+      <Syntax version="NxOS 5.1">segment id $id</Syntax>
+    </Command>
+    <Command name="group" type="command" mode="bridge domain" negated="no">
+      <Syntax version="NxOS 5.1">group $ipaddr</Syntax>
+    </Command>
+    <Command name="port-profile" type="mode" mode="global" negated="no">
+      <Syntax version="NxOS 5.1">port-profile $tenant-profile</Syntax>
+    </Command>
+    <Command name="vmware port-group" type="command" mode="port-profile" negated="no">
+      <Syntax version="NxOS 5.1">vmware port-group $network-id</Syntax>
+    </Command>
+    <Command name="switchport" type="command" mode="interface" negated="no">
+      <Syntax version="12.0(3)T">switchport $mode</Syntax>
+    </Command>
+    <Command name="switchport access bridge-domain" type="command" mode="port-profile" negated="no">
+      <Syntax version="NxOS 5.1">switchport access bridge-domain $bridge-domain-name</Syntax>
+    </Command>
+    <Command name="no shutdowm" type="command" mode="port-profile" negated="no">
+      <Syntax version="NxOS 5.1">no shutdowm</Syntax>
+    </Command>
+    <Command name="state" type="command" mode="port-profile" negated="no">
+      <Syntax version="NxOS 5.1">state $state</Syntax>
+    </Command>
+    
+    <Command name="l2 vfi" type="command" mode="global" negated="no">
+      <Syntax version="NxOS 5.1">l2 vfi $name manual</Syntax>
+      <Syntax version="12.2">l2 vfi $name manual</Syntax>
+    </Command>
+    
+    <Command name="vpn id" type="command" mode="l2 vfi" negated="no">
+      <Syntax version="NxOS 5.1">vpn id $id</Syntax>
+      <Syntax version="12.2">vpn id $id</Syntax>
+    </Command>
+
+    <Command name="neighbor" type="command" mode="l2 vfi" negated="no">
+      <Syntax version="NxOS 5.1">neighbor $ip encapsulation mpls</Syntax>
+      <Syntax version="12.2">neighbor $ip encapsulation mpls</Syntax>
+    </Command>
+    
+    <Command name="xconnect vfi" type="command" mode="interface vlan" negated="no">
+      <Syntax version="NxOS 5.1">xconnect vfi $vfi-name</Syntax>
+      <Syntax version="12.2">xconnect vfi $vfi-name</Syntax>
+    </Command>
+        
+    <Command name="otv site-identifier" type="command" mode="global" negated="no">
+      <Syntax version="NxOS 5.1">otv site-identifier $site-identifier</Syntax>
+    </Command>
+
+    <Command name="interface overlay" type="command" mode="global" negated="no">
+      <Syntax version="NxOS 5.1">interface overlay $number</Syntax>
+    </Command>
+
+    <Command name="otv control-group" type="command" mode="interface overlay" negated="no">
+      <Syntax version="NxOS 5.1">otv control-group $ip</Syntax>
+    </Command>
+
+    <Command name="otv data-group" type="command" mode="interface overlay" negated="no">
+      <Syntax version="NxOS 5.1">otv data-group $ip+mask</Syntax>
+    </Command>
+	
+    <Command name="otv join-interface" type="command" mode="interface overlay" negated="no">
+      <Syntax version="NxOS 5.1">otv join-interface $ip+mask</Syntax>
+    </Command>
+    
+    <Command name="otv extend-vlan" type="command" mode="interface overlay" negated="no">
+      <Syntax version="NxOS 5.1">otv extend-vlan $vlan</Syntax>
+    </Command>
+    
+    <Command name="no shutdown" type="command" mode="interface overlay" negated="no">
+      <Syntax version="NxOS 5.1">no shutdown</Syntax>
+    </Command>
+
+  </CommandList>
+</OSReference>

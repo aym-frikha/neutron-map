@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:element name="GenericService">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Description" type="xs:string"/>
+                <xs:element name="Transactional" type="xs:boolean"/>
+                <xs:element name="Priority" type="xs:integer"/>
+                <xs:element name="Domain" type="xs:string"/>
+                <xs:element name="ServiceTree">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Node" type="GenNode" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="GenNode">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="BaseParent" nillable="true">
+                <xs:complexType>
+                    <xs:attribute name="href" type="xs:string"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element maxOccurs="1" minOccurs="0" name="Parameters">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" name="Node" type="GenNode"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element maxOccurs="1" minOccurs="0" name="Children">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" name="Node" type="GenNode"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string"/>
+        <xs:attribute default="null" name="CimRef" type="xs:string"/>
+        <xs:attribute default="true" name="known" type="xs:boolean"/>
+        <xs:attribute default="false" name="parameter" type="xs:boolean"/>
+        <xs:attribute default="0" name="uid" type="xs:long"/>
+        <xs:attribute name="cardinality">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="11"/>
+                    <xs:enumeration value="01"/>
+                    <xs:enumeration value="0N"/>
+                    <xs:enumeration value="1N"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute default="false" name="shadow" type="xs:boolean"/>
+    </xs:complexType>
+</xs:schema>

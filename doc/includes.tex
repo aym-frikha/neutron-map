@@ -1,0 +1,30 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=3em]{geometry}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{lmodern}
+\usepackage{listings}
+\lstset{language=,
+    basicstyle=\sffamily\footnotesize,
+    xleftmargin=20pt,
+    xrightmargin=20pt,
+    numbers=left,
+    stepnumber=1, % le pas des numeros de ligne
+    numbersep=10pt,
+    breaklines=true,
+    tabsize=4,
+    %frame=single,
+    showspaces=false,
+    showstringspaces=false
+    inputencoding=utf8, %put1 d'utf8 dans listing
+    extendedchars=true, %put1 d'utf8 dans listing
+    columns=fullflexible, % suppression des espaces autour des deux-points
+    escapechar=`, % permet d'insérer du §code latex§
+    backgroundcolor=\color{lightgray},
+    keywordstyle=\hlc,
+    morecomment=[l]{\#}, % commentaires shell en ligne
+    commentstyle=\itshape\color{darkgray},
+}
+

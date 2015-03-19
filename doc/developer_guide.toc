@@ -1,0 +1,40 @@
+\contentsline {section}{\numberline {1}Solution overview}{2}
+\contentsline {subsection}{\numberline {1.1}Current openstack approach}{2}
+\contentsline {subsection}{\numberline {1.2}Global architecture}{3}
+\contentsline {section}{\numberline {2}Modules}{3}
+\contentsline {subsection}{\numberline {2.1}Node manager}{3}
+\contentsline {subsubsection}{\numberline {2.1.1}Role}{3}
+\contentsline {subsubsection}{\numberline {2.1.2}API}{3}
+\contentsline {subsubsection}{\numberline {2.1.3}Files}{5}
+\contentsline {subsection}{\numberline {2.2}Isolation provider}{5}
+\contentsline {subsubsection}{\numberline {2.2.1}Role}{5}
+\contentsline {subsubsection}{\numberline {2.2.2}API}{6}
+\contentsline {subsubsection}{\numberline {2.2.3}Files}{6}
+\contentsline {subsection}{\numberline {2.3}Topology manager}{7}
+\contentsline {subsubsection}{\numberline {2.3.1}Role}{7}
+\contentsline {subsubsection}{\numberline {2.3.2}API}{7}
+\contentsline {subsubsection}{\numberline {2.3.3}Files}{8}
+\contentsline {subsection}{\numberline {2.4}Domain keeper}{8}
+\contentsline {subsubsection}{\numberline {2.4.1}Role}{8}
+\contentsline {subsubsection}{\numberline {2.4.2}API}{9}
+\contentsline {subsubsection}{\numberline {2.4.3}Files}{10}
+\contentsline {subsection}{\numberline {2.5}Decision process}{10}
+\contentsline {subsubsection}{\numberline {2.5.1}Role}{10}
+\contentsline {subsubsection}{\numberline {2.5.2}API}{10}
+\contentsline {subsubsection}{\numberline {2.5.3}Files}{11}
+\contentsline {subsection}{\numberline {2.6}Drivers}{11}
+\contentsline {subsubsection}{\numberline {2.6.1}Role}{11}
+\contentsline {subsubsection}{\numberline {2.6.2}Api}{11}
+\contentsline {subsubsection}{\numberline {2.6.3}Files}{12}
+\contentsline {subsection}{\numberline {2.7}Netconf: driver example}{12}
+\contentsline {subsubsection}{\numberline {2.7.1}Role}{12}
+\contentsline {subsubsection}{\numberline {2.7.2}API}{12}
+\contentsline {subsubsection}{\numberline {2.7.3}Files}{13}
+\contentsline {subsection}{\numberline {2.8}Virtual network manager}{13}
+\contentsline {subsubsection}{\numberline {2.8.1}Role}{13}
+\contentsline {subsection}{\numberline {2.9}API}{13}
+\contentsline {subsection}{\numberline {2.10}Files}{13}
+\contentsline {section}{\numberline {3}Around main modules}{13}
+\contentsline {subsection}{\numberline {3.1}config}{13}
+\contentsline {subsection}{\numberline {3.2}IOS parser}{13}
+\contentsline {subsection}{\numberline {3.3}utils}{14}

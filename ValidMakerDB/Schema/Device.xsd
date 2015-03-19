@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:element name="Device">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Description" type="xs:string" nillable="true"/>
+                <xs:element name="Properties">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="IOSVersion" type="xs:string" default="null"
+                                nillable="true"/>
+                            <xs:element name="EquipmentType" type="xs:string" default="null"
+                                nillable="true"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element minOccurs="1" name="Services" nillable="true">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element maxOccurs="unbounded" minOccurs="0" name="Service">
+                                <xs:complexType>
+                                    <xs:attribute name="href" type="xs:string" default="null"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="ConfigTree">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element maxOccurs="unbounded" name="Node" type="DevNode"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="name"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="DevNode">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="BaseParent" nillable="true">
+                <xs:complexType>
+                    <xs:attribute name="href" type="xs:string"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="Modifications" nillable="true">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="Modification">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="TimeStamp" type="xs:dateTime"/>
+                                    <xs:element name="OldValue" type="xs:string"/>
+                                </xs:sequence>
+                                <xs:attribute name="source">
+                                    <xs:simpleType>
+                                        <xs:restriction base="xs:string">
+                                            <xs:enumeration value="Internal"/>
+                                            <xs:enumeration value="External"/>
+                                        </xs:restriction>
+                                    </xs:simpleType>
+                                </xs:attribute>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element minOccurs="0" name="ReferenceList">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" name="RefNode" minOccurs="0">
+                            <xs:complexType>
+                                <xs:attribute name="href" type="xs:string"/>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element maxOccurs="1" minOccurs="0" name="Parameters">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" name="Node" type="DevNode"> </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element maxOccurs="1" minOccurs="0" name="Children">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" name="Node" type="DevNode"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element minOccurs="0" name="CimRef">
+                <xs:complexType>
+                    <xs:attribute name="href" type="xs:string"/>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string"/>
+        <xs:attribute default="null" name="CimRef" type="xs:string"/>
+        <xs:attribute default="true" name="known" type="xs:boolean"/>
+        <xs:attribute default="false" name="parameter" type="xs:boolean"/>
+        <xs:attribute default="0" name="uid" type="xs:long"/>
+        <xs:attribute name="cardinality">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="11"/>
+                    <xs:enumeration value="01"/>
+                    <xs:enumeration value="0N"/>
+                    <xs:enumeration value="1N"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute default="false" name="shadow" type="xs:boolean"/>
+    </xs:complexType>
+</xs:schema>

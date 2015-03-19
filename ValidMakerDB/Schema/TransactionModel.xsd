@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:element name="TransactionModel">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="RuleGraph">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="SetOfRule">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element maxOccurs="unbounded" minOccurs="1" name="node"
+                                            type="SetOfRuleNode"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="ControlStruct" nillable="true">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="PrecedeConstruct" nillable="true">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element maxOccurs="unbounded" name="node"
+                                                  type="PrecedeConstructNode"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="PrecedeSet" nillable="true">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element maxOccurs="unbounded" name="node"
+                                                  type="PrecedeSetNode"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="SyncAtConstruct" nillable="true">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element maxOccurs="unbounded" minOccurs="1"
+                                                  name="node" type="SyncAtConstruct"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="name" type="xs:string"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="SetOfRuleNode">
+        <xs:sequence>
+            <xs:element name="level" type="xs:int"/>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="PrecedeConstructNode">
+        <xs:sequence>
+            <xs:element name="LeftRule" nillable="true" type="xs:string"/>
+            <xs:element name="RightRule" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="PrecedeSetNode">
+        <xs:sequence>
+            <xs:element name="LeftRule" type="xs:string"/>
+            <xs:element name="SetOfRightRule">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" name="node" minOccurs="0">
+                            <xs:complexType>
+                                <xs:attribute name="name" type="xs:string"/>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="SyncAtConstruct">
+        <xs:sequence>
+            <xs:element name="SetOfLeftRule">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" name="node" minOccurs="0">
+                            <xs:complexType>
+                                <xs:attribute name="name" type="xs:string"/>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RightRule" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

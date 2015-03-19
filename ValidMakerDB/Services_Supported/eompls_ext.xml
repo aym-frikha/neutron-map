@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<GenericService xmlns:ns="http://NamespaceTest.com/NodeType"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="../Schema/GenericService.xsd" name="eompls_ext">
+  <Description />
+<Transactional>false</Transactional>
+<Priority>1</Priority>
+<Domain>L3</Domain>
+  <ServiceTree>
+    <Node name="interface" uid="1">
+      <BaseParent />
+      <Children>
+        <Node name="no ip address" uid="2">
+          <BaseParent xsi:nil="true" />
+        </Node>
+          <Node name="duplex auto" uid="2">
+          <BaseParent xsi:nil="true" />
+        </Node>
+          <Node name="speed auto" uid="2">
+          <BaseParent xsi:nil="true" />
+        </Node>
+        <Node name="xconnect" uid="3">
+          <BaseParent xsi:nil="true" />
+            <Parameters>
+              <Node name="vcid" uid="4" parameter="true" shadow="true">
+                <BaseParent xsi:nil="true" />
+              </Node>
+              <Node name="encapsulation" uid="5" parameter="true">
+                <BaseParent xsi:nil="true" />
+              </Node>
+            </Parameters>
+        </Node>
+      </Children>
+    </Node>
+    <Node name="router ospf" uid="6">
+      <BaseParent />
+      <Children>
+        <Node name="log-adjacency-changes" uid="7">
+          <BaseParent xsi:nil="true" />
+        </Node>
+          <Node name="passive-interface" uid="8">
+          <BaseParent xsi:nil="true" />
+        </Node>
+        <Node name="network" uid="9">
+          <BaseParent xsi:nil="true" />
+            <Parameters>
+              <Node name="area" uid="10">
+                <BaseParent xsi:nil="true" />
+              </Node>
+            </Parameters>
+        </Node>
+      </Children>
+    </Node>
+  </ServiceTree>
+</GenericService>

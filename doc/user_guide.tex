@@ -1,0 +1,143 @@
+\include{includes}
+
+\begin{document}
+
+\title{MAP:\\User guide}
+\maketitle
+\section{Installation}
+
+To install MAP as your openstack plugin, you must ensure the following steps
+are respected.\\
+First of all, get the last version of this plugin and paste main folder in
+your neutron's plugins folder (usually /opt/stack/neutron/neutron/plugins/).
+Rename this folder 'map'.\\
+
+If you installed devstack in /opt/stack, you can uses 'finalize.sh' script, found in 'install' folder.
+If necessary, change variables at the top of the script.
+\begin{verbatim}
+cd install && sudo ./finalize.sh
+\end{verbatim}
+
+If you openstack installation is more specific, you must follow the sames steps
+than the script described bellow.
+
+\subsection{MAP as core plugin}
+Starting MAP as neutron's main plugin:
+Replace \textit{core\_plugin} parameter by:
+%\begin{verbatim}
+%core_plugin = neutron.plugins.openvswitch.ovs_neutron_plugin.OVSNeutronPluginV2
+%\end{verbatim}
+%by~:
+\begin{verbatim}
+core_plugin = neutron.plugins.map.dynamic_plugin.DynamicNeutronPlugin
+\end{verbatim}
+in neutron's configuration file (default: /etc/neutron/neutron.conf)
+
+\subsection{MAP configuration}
+MAP needs a configuration file to run. 'example-config.ini' is a configuration
+file example in 'install' folder. This file can be stored in /etc/neutron. For
+example~:
+
+\begin{verbatim}
+mkdir -p /etc/neutron/plugins/map/
+cp example-config.ini /etc/neutron/plugins/map/map.ini
+\end{verbatim}
+Then adapt it to your own configuration.\\
+When starting neutron, this configuration file must be called. If screen is
+used (devstack), replace~:
+\begin{verbatim}
+cd /opt/stack/neutron && python /usr/local/bin/neutron-server --config-file \
+  /etc/neutron/neutron.conf --config-file \
+  /etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini
+\end{verbatim}
+by~:
+\begin{verbatim}
+cd /opt/stack/neutron && python /usr/local/bin/neutron-server --config-file \
+  /etc/neutron/neutron.conf --config-file /etc/neutron/plugins/map/map.ini
+\end{verbatim}
+in stack-screenrc (default: /opt/stack/devstack/stack-screenrc)
+
+\subsection{Data storage}
+MAP needs to store some data, in particular on network or for drivers. Usually,
+services data are stored in /opt/stack/data/\textless service\_name\textgreater / \\
+MAP needs a 'network' folder and netconf driver needs a 'netconf' folder.
+'install' folder contains example. As an exemple, this is how it can be done~:
+\begin{verbatim}
+mkdir -p /opt/stack/data/neutron/plugins/map/
+mv network /opt/stack/data/neutron/plugins/map/
+mv netconf /opt/stack/data/neutron/plugins/map/
+\end{verbatim}
+New folder can as well be used~:
+\begin{verbatim}
+mkdir -p /opt/stack/data/neutron/plugins/map/network
+mkdir /opt/stack/data/neutron/plugins/map/netconf
+\end{verbatim}
+MAP's configuration file may be adapted to refer those folders.
+
+\subsection{Dependencies}
+Here is a list of map dependencies:
+\begin{itemize}
+    \item pyxb
+    \item ncclient
+\end{itemize}
+Install dependencies~:
+\begin{verbatim}
+sudo pip install pyxb
+sudo git clone git://github.com/leopoul/ncclient
+(cd ncclient && patch -p1 < ../dynamips_compat.patch && python setup.py install)
+\end{verbatim}
+'install' folder contains a patch to apply on ncclient before installing it.
+This patch is required to work with dynagen/gns3 equipments.\\
+{\large\textbf{WARNING:}} \textbf{This patch will probably induce ncclient
+inablity to communicate with real equipments. For our test however, we had to use
+it to communicate with cisco emulated equipments. Two major points are changed
+by this patch: \begin{itemize}
+\item Spaces add at the end of tags are removed (\textless tag /\textgreater
+=\textgreater \textless tag/\textgreater)
+\item Namespace used is different ('urn:ietf:params:xml:ns:netconf:base:1.0'\\
+becomes 'urn:ietf:params:netconf:base:1.0')
+\end{itemize}}
+
+\section{Administrate}
+
+\subsection{Network modifications}
+When network is modified, topology file must be updated. In 'install/network'
+folder, a '.db' file is given as an example~:
+\begin{verbatim}
+NODE,R1,L3
+NODE,SW3,L2
+NODE,SW2,L2
+
+LINK,R1,FastEthernet0/0,SW2,FastEthernet1/4
+LINK,R1,FastEthernet1/0,SW1,FastEthernet1/3
+\end{verbatim}
+This topology file is a csv containing Nodes declarations with keyword 'NODE'
+followed by nodes name and its switching level (Layer 2 or Layer 3). Links are
+declared in this file as well, with 'LINK' keyword, then
+origin Node name and port followed by destination Node name and port.\\
+At least one driver must also get credentials to access and modify device
+configuration. If you use netconf, add new devices in device file. An example
+device file is also provided in 'install/network'~:
+\begin{verbatim}
+#name,ip,port,login,password,netconf syntaxe
+R1,132.208.13.62,22,charles,behappy,gns3
+\end{verbatim}
+As commented above, a device is a comma separated value line. Fields are in order:
+name, ip, port, login, password and a keyword that permits to identify netconf's
+format used to communicate with the device. Netconf formats are stored in
+syntaxe files. To see an example~:'install/netconf/syntaxe/'. Stx files actually
+contain python dictionarys with python string values. 'Command' key refers to
+syntaxe of a command. 'Wrapper' is used once for all commands.\\
+\textbf{Currently, neutron must be restarted after any modification on those
+files!}\\[1\baselineskip] Referenced files above are configured in MAP configuration file. Format used
+may be changed.
+\begin{itemize}
+    \item A single file will probably be created for all drivers, adding at
+    least a 'driver' field
+    \item Topology file and driver file may be merged
+    \item If variable syntaxes are found for netconf, stx files may change to
+    cover various syntaxes needs.
+\end{itemize}
+This documentation should be updated accordingly.
+
+\end{document}

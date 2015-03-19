@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<GenericService xmlns:ns="http://NamespaceTest.com/NodeType"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="../Schema/GenericService.xsd" name="trunk-allow" >
+  <Description>
+  </Description>
+<Transactional>false</Transactional>
+<Priority>2</Priority>
+<Domain>L2</Domain>
+  <ServiceTree>
+    <Node name="interface" CimRef="" uid="1">
+      <BaseParent href="" />
+      <Children>
+        <Node name="switchport access" CimRef="" uid="2">
+                <Parameters>
+                    <Node name="vlan" CimRef="" uid="4"></Node>
+                </Parameters>
+          </Node>
+        <Node name="switchport mode" CimRef="" uid="2"/>
+        <Node name="switchport trunk" CimRef="" uid="3">
+            <Parameters>
+                <Node name="vlan" CimRef="" uid="4"/>
+            </Parameters>
+        </Node>
+	</Children>
+    </Node>
+  </ServiceTree>
+</GenericService>

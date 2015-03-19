@@ -1,0 +1,51 @@
+<?xml version="1.0" ?>
+<Device name="R4">
+	<Description>
+  </Description>
+	<Properties>
+		<IOSVersion>12.0(3)T</IOSVersion>
+		<EquipmentType>
+    </EquipmentType>
+	</Properties>
+	<Services/>
+	<ConfigTree>
+		<Node CimRef="" name="version">
+			<BaseParent href=""/>
+			<Value>12.2</Value>
+		</Node>
+		<Node CimRef="" name="hostname">
+			<BaseParent href=""/>
+			<Value>Router</Value>
+		</Node>
+		<Node CimRef="" name="ip cef">
+			<BaseParent href=""/>
+		</Node>
+		<Node CimRef="" name="interface">
+			<BaseParent href=""/>
+			<Value>FastEthernet1/0</Value>
+			<Children>
+				<Node CimRef="" name="no ip address"/>
+			</Children>
+		</Node>
+		<Node CimRef="" name="interface">
+			<BaseParent href=""/>
+			<Value>FastEthernet1/1</Value>
+			<Children>
+				<Node CimRef="" name="no ip address"/>
+			</Children>
+		</Node>
+		<Node CimRef="" name="interface">
+			<BaseParent href=""/>
+			<Value>GigabitEthernet2/0</Value>
+			<Children>
+				<Node CimRef="" name="no ip address"/>
+			</Children>
+		</Node>
+		<Node CimRef="" name="ip classless">
+			<BaseParent href=""/>
+		</Node>
+		<Node CimRef="" name="end">
+			<BaseParent href=""/>
+		</Node>
+	</ConfigTree>
+</Device>

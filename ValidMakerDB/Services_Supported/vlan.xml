@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<GenericService xmlns:ns="http://NamespaceTest.com/NodeType"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="../Schema/GenericService.xsd" name="vlan">
+  <Description />
+<Transactional>false</Transactional>
+<Priority>2</Priority>
+<Domain>L2</Domain>
+  <ServiceTree>
+    <Node name="interface" uid="1">
+      <BaseParent />
+      <Children>
+        <Node name="switchport" uid="2">
+          <BaseParent xsi:nil="true" />
+            <Parameters>
+                <Node name="vlan" uid="3">
+                    <BaseParent xsi:nil="true" />
+                </Node>
+            </Parameters>
+        </Node>
+      </Children>
+    </Node>
+  </ServiceTree>
+</GenericService>

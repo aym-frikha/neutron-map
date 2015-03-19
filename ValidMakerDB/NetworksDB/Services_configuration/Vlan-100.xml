@@ -1,0 +1,25 @@
+<?xml version="1.0" standalone="yes"?>
+<ServiceInstance name="Vlan-100">
+  <Description>
+  </Description>
+<Transactional>false</Transactional>
+<Priority>2</Priority>
+<Domain>L2</Domain>
+  <InstanceOf href="Vlan" />
+  <ServiceTree>
+    <Node name="interface" uid="1">
+      <BaseParent href="" />
+      <Value>Fe1/0</Value>
+      <Children>
+        <Node name="mode" uid="2" >
+            <BaseParent href="" />
+            <Value>access</Value>
+        </Node>
+        <Node name="vlan" uid="3" >
+            <BaseParent href="" />
+            <Value>100</Value>
+        </Node>
+      </Children>
+    </Node>
+  </ServiceTree>
+</ServiceInstance>

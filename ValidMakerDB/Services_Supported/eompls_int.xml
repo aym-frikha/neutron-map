@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<GenericService xmlns:ns="http://NamespaceTest.com/NodeType"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="../Schema/GenericService.xsd" name="eompls_int">
+  <Description />
+<Transactional>false</Transactional>
+<Priority>1</Priority>
+<Domain>L3</Domain>
+  <ServiceTree>
+    <Node name="interface" uid="1">
+      <BaseParent />
+      <Children>
+        <Node name="ip address" uid="2">
+          <BaseParent xsi:nil="true" />
+        </Node>
+        <Node name="ip ospf network" uid="3">
+          <BaseParent xsi:nil="true" />
+        </Node>
+      </Children>
+    </Node>
+    <Node name="interface" uid="4">
+      <BaseParent />
+      <Children>
+        <Node name="mpls ip" uid="5">
+          <BaseParent xsi:nil="true" />
+        </Node>
+      </Children>
+    </Node>
+  </ServiceTree>
+</GenericService>

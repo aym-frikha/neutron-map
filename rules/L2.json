@@ -1,0 +1,8 @@
+{
+    "L2" : [
+        {
+            "apply" : ["trunk-allow", "GRE"]
+        }
+    ]
+}
+        

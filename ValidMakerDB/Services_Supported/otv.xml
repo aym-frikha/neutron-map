@@ -1,0 +1,34 @@
+<?xml version="1.0" standalone="yes"?>
+<GenericService name="otv">
+  <Description>
+  </Description>
+<Transactional>false</Transactional>
+<Priority>1</Priority>
+<Domain>L2</Domain>
+  <ServiceTree>
+    <Node name="vlan"  uid="1">
+      <BaseParent href="" />
+    </Node>
+    <Node name="otv site-identifier"  uid="4">
+      <BaseParent href="" />
+    </Node>
+    <Node name="interface overlay"  uid="5">
+      <BaseParent href="" />
+      <Children>
+        <Node name="otv control-group"  uid="6" />
+        <Node name="otv data-group"  uid="7" />
+        <Node name="otv join-interface"  uid="8" />
+        <Node name="otv extend-vlan"  uid="9" />
+        <Node name="no shutdown"  uid="10" />
+      </Children>
+    </Node>
+    <Node name="interface"  uid="11">
+      <BaseParent href="" />
+      <Children>
+        <Node name="ip address"  uid="12" />
+        <Node name="ip igmp version"  uid="13" />
+        <Node name="no shutdown"  uid="14" />
+      </Children>
+    </Node>
+  </ServiceTree>
+</GenericService>

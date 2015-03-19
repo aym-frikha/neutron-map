@@ -1,0 +1,51 @@
+<?xml version="1.0" standalone="yes"?>
+<Rule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="file:/C:/Program%20Files/validmaker/Data/Schema/Rule.xsd" name="trunk-allow Rule01">
+  <Description>In two different trees, if the values of 'ip vrf' nodes match, then the data in the branches of those nodes must match as well. </Description>
+  <Conditions>
+    <Condition>
+      <LogicalOp>NONE</LogicalOp>
+      <Negated>false</Negated>
+      <Operation>NodeDataEqual</Operation>
+      <LeftTree>1</LeftTree>
+      <LeftOperand>
+        <Node>
+          <ServiceRef>trunk-allow</ServiceRef>
+          <Name>mode</Name>
+          <GUID>2</GUID>
+        </Node>
+      </LeftOperand>
+      <RightTree>2</RightTree>
+      <RightOperand>
+        <Node>
+          <ServiceRef>trunk-allow</ServiceRef>
+          <Name>mode</Name>
+          <GUID>2</GUID>
+        </Node>
+      </RightOperand>
+    </Condition>
+  </Conditions>
+  <Actions>
+    <Action>
+      <LogicalOp>NONE</LogicalOp>
+      <Negated>false</Negated>
+      <Operation>NodeDataEqual</Operation>
+      <LeftTree>1</LeftTree>
+      <LeftOperand>
+        <Node>
+          <ServiceRef>trunk-allow</ServiceRef>
+          <Name>mode</Name>
+          <GUID>2</GUID>
+        </Node>
+      </LeftOperand>
+      <RightTree>2</RightTree>
+      <RightOperand>
+        <Node>
+          <ServiceRef>trunk-allow</ServiceRef>
+          <Name>mode</Name>
+          <GUID>2</GUID>
+        </Node>
+      </RightOperand>
+    </Action>
+  </Actions>
+</Rule>

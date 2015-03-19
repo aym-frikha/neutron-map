@@ -1,0 +1,5 @@
+      #;  server1,132.208.13.50,server,thinkmate,Ltir2014 ;  Router1,132.208.13.50,router,thinkmate,Ltir2014  ;  Router2,132.208.13.50,router,thinkmate,Ltir2014  ;  server2,132.208.13.50,server,thinkmate,Ltir2014
+server1;            #                          ;       link1,eth1,FastEthernet0/0       ;             #                          ;           #
+Router1;  link1,FastEthernet0/0,eth1           ;           #                            ;  # ;            #
+Router2;                  #                    ; # ;             #                          ;       link3,FastEthernet0/1,eth1
+server2;             #                          ;             #                          ;  link3,eth1,FastEthernet0/1            ;                #

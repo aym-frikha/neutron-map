@@ -1,0 +1,15 @@
+NODE,Nexus-1000v(1),L2
+NODE,Nexus-1000v(2),L2
+NODE,Nexus-1000v(3),L2
+NODE,Nexus-1000v(4),L2
+NODE,Nexus-5000(1),L2
+NODE,Nexus-5000(2),L2
+#
+LINK,Nexus-1000v(1),ethernet 0/1,Nexus-5000(1),fastethernet 0/1
+LINK,Nexus-1000v(2),ethernet 0/1,Nexus-5000(1),fastethernet 0/2
+LINK,Nexus-1000v(3),ethernet 0/1,Nexus-5000(2),fastethernet 0/1
+LINK,Nexus-1000v(4),ethernet 0/1,Nexus-5000(2),fastethernet 0/2
+#
+LINK,Nexus-5000(1),fastethernet 0/3,Nexus-5000(2),fastethernet 0/3
+#
+BROD,Nexus-1000v(1),Nexus-1000v(2),Nexus-1000v(3),Nexus-1000v(4),Nexus-5000(1),Nexus-5000(2)

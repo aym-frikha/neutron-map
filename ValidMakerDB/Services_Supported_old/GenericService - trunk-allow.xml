@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<GenericService xmlns:ns="http://NamespaceTest.com/NodeType"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="file:/C:/Program%20Files/validmaker/Data/Schema/GenericService.xsd" name="trunk-allow" >
+  <Description>
+  </Description>
+<Priority>False</Priority>
+<Domain>L2</Domain>
+  <ServiceTree>
+    <Node name="interface" CimRef="" uid="1">
+      <BaseParent href="" />
+      <Children>
+        <Node name="trunk vlan" CimRef="" uid="2"/>
+	</Children>
+    </Node>
+  </ServiceTree>
+</GenericService>

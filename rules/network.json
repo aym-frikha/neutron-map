@@ -1,0 +1,62 @@
+{
+    "network" : [
+    {
+        "condition" : [
+            {
+                "test" : {
+                    "isolation" : ["VxLANProfile"]
+                },
+                "match" : [{
+                    "apply" : ["VxLANProfile"]
+                }]
+            },
+            {
+                "test" : {
+                    "isolation" : ["NVGRE"]
+                },
+                "match" : [{
+                    "apply" : ["NVGRE"]
+                }]
+            },
+            {
+                "test" : {
+                    "isolation" : ["STT"]
+                },
+                "match" : [{
+                    "apply" : ["STT"]
+                }]
+            },
+
+            {
+                "test" : {
+                    "isolation" : [],
+                    "!isolation" : ["VxLANProfile, NVGRE, STT"]
+                },
+                "match" : [{
+                    "divide" : [
+                        {
+                            "test" : {
+                                "isolation" : []
+                            },
+                            "match" : []
+                        },
+                        {
+                            "test" : {
+                                "!isolation" : []
+                            },
+                            "match" : [{
+                                "follow" : "mixed-l2-l3"
+                            }]
+                        }
+                    ]
+                }],
+                "unmatch" : [
+                    {
+                        "follow" : ["domain"]
+                    }
+                ]
+            }
+        ]
+    }]
+}
+

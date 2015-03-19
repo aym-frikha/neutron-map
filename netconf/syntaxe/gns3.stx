@@ -1,0 +1,1 @@
+{'command': "<cmd>%s</cmd>", 'wrapper': "<config><cli-config-data>%s</cli-config-data></config>"}

@@ -1,0 +1,82 @@
+<?xml version="1.0" ?>
+<Device name="R2">
+	<Description>
+  </Description>
+	<Properties>
+		<IOSVersion>12.0(3)T</IOSVersion>
+		<EquipmentType>
+    </EquipmentType>
+	</Properties>
+	<Services>
+		<Service href="R2-trunk-allow-59"/>
+	</Services>
+	<ConfigTree>
+		<Node CimRef="" name="version">
+			<BaseParent href=""/>
+			<Value>12.2</Value>
+		</Node>
+		<Node CimRef="" name="hostname">
+			<BaseParent href=""/>
+			<Value>Router</Value>
+		</Node>
+		<Node CimRef="" name="ip cef">
+			<BaseParent href=""/>
+		</Node>
+		<Node CimRef="" name="interface">
+			<BaseParent href=""/>
+			<Value>FastEthernet0/1</Value>
+			<Children>
+				<Node CimRef="" name="no ip address"/>
+			</Children>
+		</Node>
+		<Node CimRef="" name="interface">
+			<BaseParent href=""/>
+			<Value>FastEthernet1/1</Value>
+			<Children>
+				<Node CimRef="" name="no ip address"/>
+			</Children>
+		</Node>
+		<Node CimRef="" name="interface">
+			<BaseParent href=""/>
+			<Value>GigabitEthernet2/0</Value>
+			<Children>
+				<Node CimRef="" name="no ip address"/>
+			</Children>
+		</Node>
+		<Node CimRef="" name="ip classless">
+			<BaseParent href=""/>
+		</Node>
+		<Node CimRef="" name="end">
+			<BaseParent href=""/>
+		</Node>
+		<Node known="true" name="interface" parameter="false" shadow="false" uid="1">
+			<BaseParent href=""/>
+			<Value>Fa0/1</Value>
+			<ReferenceList>
+				<RefNode href="R2-trunk-allow-59:1"/>
+			</ReferenceList>
+			<Children>
+				<Node known="true" name="mode" parameter="false" shadow="false" uid="2">
+					<Value>trunk</Value>
+					<ReferenceList>
+						<RefNode href="R2-trunk-allow-59:2"/>
+					</ReferenceList>
+				</Node>
+				<Node known="true" name="trunk vlan" parameter="false" shadow="false" uid="3">
+					<Value>allow</Value>
+					<ReferenceList>
+						<RefNode href="R2-trunk-allow-59:3"/>
+					</ReferenceList>
+					<Children>
+						<Node known="true" name="vlan" parameter="true" shadow="false" uid="0">
+							<Value>59</Value>
+							<ReferenceList>
+								<RefNode href="R2-trunk-allow-59:0"/>
+							</ReferenceList>
+						</Node>
+					</Children>
+				</Node>
+			</Children>
+		</Node>
+	</ConfigTree>
+</Device>
