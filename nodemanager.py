@@ -6,14 +6,10 @@
 # 23.07.2013
 
 # # IF IN NEUTRON
-# from neutron.openstack.common import log as logging
-#LOG = logging.getLogger(__name__)
-# # Else
-from neutron.plugins.map.fake_environment import _
-from neutron.plugins.map.fake_environment import log
+from neutron.openstack.common import log as logging
+LOG = logging.getLogger(__name__)
 
-LOG = log()
-from neutron.plugins.map.resources import ResourceManager
+
 from neutron.plugins.map.DB_Structures import Device
 
 
@@ -130,54 +126,6 @@ def _version_supported(command, mode, reference):
                 versions.append(syntax.version)
     return versions
 
-
-# class NodeManager():
-    # def __init__(self, resources):
-    #     self.db_manager = resources
-    #     return
-
-# def _verif_tree_node(self, childnode, reference, device):
-#     if childnode.Children:
-#         for node in childnode.Children.Node:
-#             versions = _version_supported(node.name, childnode.name,
-#                                               reference)
-#             state_init = _device_supported(versions, device)
-#             self.is_applicable = is_applicable * state_init
-#             _verif_tree_node(node, reference, device)
-#     else:
-#         return
-
-    # def applicable_service_by_device(self, service_name, device_name):
-    #     self.is_applicable = True
-    #     service = self.db_manager.get_gen_service(service_name)
-    #     try:
-    #         device = self.db_manager.get_device_config(device_name)
-    #     except NoDeviceReprException:
-    #         return False
-    #     reference = self.db_manager.get_conf_references('IOS')
-    #     for node in service.ServiceTree.Node:
-    #         versions = _version_supported(node.name, 'global', reference)
-    #         state_init = _device_supported(versions, device)
-    #         self.is_applicable = self.is_applicable * state_init
-    #         self._verif_tree_node(node, reference, device)
-    #     return self.is_applicable
-
-    # def list_services_by_devices(self, list_services, list_devices):
-    #     """
-    #
-    #     :param list_services:
-    #     :param list_devices:
-    #     :return:
-    #     """
-    #     applicability = dict()
-    #     for device in list_devices:
-    #         services = ''
-    #         for service in list_services:
-    #             if self.applicable_service_by_device(service, device):
-    #                 services = services + service + '/'
-    #         applicability[device] = services
-    #     return applicability
-
 def _deploy_node( src_node, parent_node, instance_service_name,
                 last_node, device, is_parameter = False):
     added = False
@@ -250,7 +198,7 @@ def deploy_service( device, inst_service):
     present = False
     for service_name in device.Services.Service:
        if service_name.href == inst_service.name:
-           LOG.info(_("Service '%s' is already deployed on '%s'"),
+           LOG.info("Service '%s' is already deployed on '%s'",
                      service_name.href, device.name)
            present = True
     stack = []
@@ -276,7 +224,7 @@ def deploy_service( device, inst_service):
                                          last_node, device)
     _add_serv_instance(device, inst_service.name)
     if not present:
-        LOG.info(_("Service '%s' is deployed on '%s'"),
+        LOG.info("Service '%s' is deployed on '%s'",
                  inst_service.name, device.name)
     # print(device)
     # self.db_manager.set_device_config(device)
@@ -314,7 +262,7 @@ def remove_service( device, instance_service_name):
     :return: device: Device object
     """
     if not device.Services.Service:
-        LOG.error(_("No services are deployed on '%s'"), device.name)
+        LOG.error("No services are deployed on '%s'", device.name)
         exit()
     found = False
     for service in device.Services.Service:
@@ -324,11 +272,11 @@ def remove_service( device, instance_service_name):
             _remove_service_from_list(device, instance_service_name)
             found = True
     if found == False:
-        LOG.error(_("Service '%s' not found on '%s'"),
+        LOG.error("Service '%s' not found on '%s'",
                     instance_service_name, device.name)
         exit()
     else:
-        LOG.info(_("Service '%s' removed from '%s'"),
+        LOG.info("Service '%s' removed from '%s'",
                     instance_service_name, device.name)
     return device
 
@@ -391,7 +339,7 @@ def discover_service( device, inst_service):
                     parent = d_node
                     break
             if parent == None:
-                LOG.info(_("attachement parent for node %r was not found"),
+                LOG.info("attachement parent for node %r was not found",
                             s_node.name)
                 all_found = False
             else:
@@ -405,72 +353,4 @@ def discover_service( device, inst_service):
             break
     return all_found
 
-    # def get_identifiant(self, device, node_name):
-    #     for node in device.ConfigTree.Node:
-    #         if node.name == node_name:
-    #             return node.Value
-    #         if node.Children:
-    #             for child in node.Children.Node:
-    #                 if child.name == node_name:
-    #                     return child.Value
-    #     return None
 
-    # def discover_all_services(self, device_name):
-    #     """Discover Services_Instances on a Device"""
-    #     device = self.get_device_by_name(device_name)
-    #     if not device:
-    #         return {}
-    #     services = self.list_services()
-    #     discovered_services = {}
-    #     for service_name in services:
-    #         service = self.get_service(service_name)
-    #         if self.discover_service(device, service):
-    #             if service_name == constants.VPLS:
-    #                 discovered_services[service_name] = self.get_identifiant(
-    #                     device, constants.VPLS_ID)
-    #             if service_name == constants.VLAN:
-    #                 discovered_services[service_name] = self.get_identifiant(
-    #                     device, constants.VLAN_ID)
-    #             if service_name == constants.TRUNK - ALLOW:
-    #                 discovered_services[service_name] = self.get_identifiant(
-    #                     device, constants.TRUNK_ALLOW_ID)
-    #             if service_name == constants.TRUNK:
-    #                 discovered_services[service_name] = self.get_identifiant(
-    #                     device, None)
-    #     return discovered_services
-
-    # def get_usedids(self, device_name):
-    #     try:
-    #         device = self.get_device_by_name(device_name)
-    #     except NoDeviceReprException:
-    #         return {}
-    #     services = self.list_services()
-    #     used_ids = {}
-    #     for service_name in services:
-    #         service = self.get_service(service_name)
-    #         if self.discover_service(device, service):
-    #             if service_name == constants.VPLS:
-    #                 if not used_ids.has_key(service_name):
-    #                     used_ids[service_name] = list()
-    #                 id = {'type_id': 'INT',
-    #                       'value': self.get_identifiant(device, constants.VPLS_ID)}
-    #                 used_ids[service_name].append(id)
-    #             if service_name == constants.VLAN:
-    #                 if not used_ids.has_key(service_name):
-    #                     used_ids[service_name] = list()
-    #                 id = {'type_id': 'INT',
-    #                       'value': self.get_identifiant(device, constants.VLAN_ID)}
-    #                 used_ids[service_name].append(id)
-    #             if service_name == constants.TRUNK_ALLOW:
-    #                 if not used_ids.has_key(service_name):
-    #                     used_ids[service_name] = list()
-    #                 id = {'type_id': 'INT',
-    #                       'value': self.get_identifiant(device, constants.TRUNK_ALLOW_ID)}
-    #                 used_ids[service_name].append(id)
-    #             if service_name == constants.TRUNK:
-    #                 if not used_ids.has_key(service_name):
-    #                     used_ids[service_name] = list()
-    #                 id = {'type_id': 'INT',
-    #                       'value': self.get_identifiant(device, None)}
-    #                 used_ids[service_name].append(id)
-    #     return used_ids

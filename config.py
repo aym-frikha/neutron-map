@@ -36,15 +36,12 @@ map_opts = [
                help=_("Path containing service files")),
     cfg.StrOpt('service_rules_path', default='',
                help=_("Path containing service rules files")),
-    #cfg.StrOpt('rules', default='/opt/stack/neutron/neutron/plugins/map/rules/',
-         #      help=_("Path pointing folder containing decision rules")),
+
     cfg.ListOpt('drivers', default=['neutron.plugins.map.cli_driver.cli.CliDriver'],
                help=_("List of drivers class to load. Drivers are used to "
                       "communicate with devices")),
     cfg.StrOpt('os_references', default='',
                help=_("File containing all OS references")),
-   # cfg.BoolOpt('load_conf_at_boot', default='False',
-      #         help=_("Force config load, even if known, at plugin boot")),
 ]
 
 netconf_opts = [

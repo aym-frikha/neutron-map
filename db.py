@@ -1,27 +1,15 @@
-import os
-from time import sleep
+
 
 __author__ = 'aymen'
 
-import collections
-
-from sqlalchemy import or_, literal
 from sqlalchemy.orm import exc
-
 from oslo.db import exception as db_exc
-from neutron.common import constants as n_const
-from neutron.db import api as db_api
 from neutron.db import models_v2
-from neutron.db import securitygroups_db as sg_db
-from neutron.extensions import portbindings
-from neutron import manager
 from neutron.openstack.common import log
-from neutron.openstack.common import uuidutils
 from neutron.plugins.map import models
 from novaclient.client import Client
-
 from oslo.config import cfg
-
+import os
 LOG = log.getLogger(__name__)
 
 

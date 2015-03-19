@@ -9,5 +9,3 @@ ncclient
 git clone git://github.com/leopoul/ncclient
 sudo python setup.py install
 
-mkdir -p /opt/stack/data/neutron/plugins/dneutron/netconf
-mkdir -p /opt/stack/data/neutron/plugins/dneutron/network

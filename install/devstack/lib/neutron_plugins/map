@@ -1,0 +1,78 @@
+#  Modular and adaptative plugin`
+# ------------------------------
+
+# Save trace setting
+MAP_XTRACE=$(set +o | grep xtrace)
+set +o xtrace
+
+source $TOP_DIR/lib/neutron_plugins/ovs_base
+
+
+MAP_API_HOST=${MAP_API_HOST:-127.0.0.1}
+MAP_API_PORT=${MAP_API_PORT:-8080}
+
+function neutron_plugin_create_nova_conf {
+_neutron_ovs_base_configure_nova_vif_driver
+}
+
+function neutron_plugin_configure_plugin_agent {
+
+   # Set up integration bridge
+    _neutron_ovs_base_setup_bridge $OVS_BRIDGE
+    iniset /$Q_PLUGIN_CONF_FILE ovs integration_bridge $OVS_BRIDGE
+    AGENT_BINARY="$NEUTRON_DIR/neutron/plugins/map/agent/map_agent.py"
+
+    _neutron_ovs_base_configure_firewall_driver
+}
+
+function neutron_plugin_setup_interface_driver {
+    local conf_file=$1
+    iniset $conf_file DEFAULT interface_driver neutron.agent.linux.interface.OVSInterfaceDriver
+    iniset $conf_file DEFAULT ovs_use_veth True
+}
+
+function neutron_plugin_install_agent_packages {
+    _neutron_ovs_base_install_agent_packages
+}
+
+
+
+MAP_L3_PLUGIN=${MAP_L3_PLUGIN:-neutron.services.l3_router.l3_router_plugin.L3RouterPlugin}
+function neutron_plugin_configure_common {
+    Q_PLUGIN_CONF_PATH=etc/neutron/plugins/map
+    Q_PLUGIN_CONF_FILENAME=map_conf.ini
+    Q_PLUGIN_CLASS="neutron.plugins.map.plugin.MapPlugin"
+    _neutron_service_plugin_class_add $MAP_L3_PLUGIN
+}
+
+function neutron_plugin_configure_debug_command {
+    _neutron_ovs_base_configure_debug_command
+}
+
+function neutron_plugin_configure_dhcp_agent {
+iniset $Q_DHCP_CONF_FILE DEFAULT dhcp_agent_manager neutron.agent.dhcp_agent.DhcpAgentWithStateReport
+}
+
+function neutron_plugin_configure_l3_agent {
+     _neutron_ovs_base_configure_l3_agent
+    iniset $Q_L3_CONF_FILE DEFAULT l3_agent_manager neutron.agent.l3_agent.L3NATAgentWithStateReport
+}
+
+function is_neutron_ovs_base_plugin {
+    # Yes, we use OVS.
+    return 0
+}
+
+
+
+function neutron_plugin_configure_service {
+
+
+   Q_SRV_EXTRA_OPTS+=(tenant_network_types=gre)
+
+}
+
+function has_neutron_plugin_security_group {
+    return 1
+}
+

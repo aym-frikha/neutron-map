@@ -1,10 +1,9 @@
 import re
 import traceback
 # # IF IN NEUTRON
-#from neutron.openstack.common import log as logging
-#LOG = logging.getLogger(__name__)
-# Else
-from neutron.plugins.map.fake_environment import _
+from neutron.openstack.common import log as logging
+LOG = logging.getLogger(__name__)
+
 
 
 def format_port(port):
